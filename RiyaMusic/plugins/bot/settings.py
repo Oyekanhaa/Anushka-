@@ -1,62 +1,33 @@
-# Copyright (c) 2025 Nand Yaduwanshi <NoxxOP>
-# Location: Supaul, Bihar
+#
+# Copyright (C) 2021-2022 by TheAloneteam@Github, < https://github.com/TheAloneTeam >.
+#
+# This file is part of < https://github.com/TheAloneTeam/AloneMusic > project,
+# and is released under the "GNU v3.0 License Agreement".
+# Please see < https://github.com/TheAloneTeam/AloneMusic/blob/master/LICENSE >
 #
 # All rights reserved.
-#
-# This code is the intellectual property of Nand Yaduwanshi.
-# You are not allowed to copy, modify, redistribute, or use this
-# code for commercial or personal projects without explicit permission.
-#
-# Allowed:
-# - Forking for personal learning
-# - Submitting improvements via pull requests
-#
-# Not Allowed:
-# - Claiming this code as your own
-# - Re-uploading without credit or permission
-# - Selling or using commercially
-#
-# Contact for permissions:
-# Email: badboy809075@gmail.com
-
+from time import time
 
 from pyrogram import filters
 from pyrogram.enums import ChatType
-from time import time, strftime, gmtime
 from pyrogram.errors import MessageNotModified
-from pyrogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message,
-)
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineKeyboardMarkup, Message)
 
+import config
 from RiyaMusic import app
-from RiyaMusic.utils.database import (
-    add_nonadmin_chat,
-    get_authuser,
-    get_authuser_names,
-    get_playmode,
-    get_playtype,
-    get_upvote_count,
-    is_nonadmin_chat,
-    is_skipmode,
-    remove_nonadmin_chat,
-    set_playmode,
-    set_playtype,
-    set_upvotes,
-    skip_off,
-    skip_on,
-)
-from RiyaMusic.utils import bot_sys_stats
+from RiyaMusic.utils.database import (add_nonadmin_chat, get_authuser,
+                                       get_authuser_names, get_playmode,
+                                       get_playtype, get_upvote_count,
+                                       is_nonadmin_chat, is_skipmode,
+                                       remove_nonadmin_chat, set_playmode,
+                                       set_playtype, set_upvotes, skip_off,
+                                       skip_on)
 from RiyaMusic.utils.decorators.admins import ActualAdminCB
 from RiyaMusic.utils.decorators.language import language, languageCB
-from RiyaMusic.utils.inline.settings import (
-    auth_users_markup,
-    playmode_users_markup,
-    setting_markup,
-    vote_mode_markup,
-)
+from RiyaMusic.utils.inline.settings import (auth_users_markup,
+                                              playmode_users_markup,
+                                              setting_markup, vote_mode_markup)
 from RiyaMusic.utils.inline.start import private_panel
 from config import BANNED_USERS, OWNER_ID
 
@@ -90,24 +61,49 @@ async def settings_cb(client, CallbackQuery, _):
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
-@app.on_callback_query(filters.regex("^api_status$"))
-async def show_bot_info(client, query: CallbackQuery):
+
+@app.on_callback_query(filters.regex("^bot_info_data$"))
+async def show_bot_info(c: app, q: CallbackQuery):
     start = time()
-    temp = await client.send_message(query.message.chat.id, "ᴘɪɴɢ ᴘᴏɴɢ 💕..")
+    x = await c.send_message(q.message.chat.id, "ᴘɪɴɢ ᴘᴏɴɢ 💕..")
     delta_ping = time() - start
-    await temp.delete()
+    await x.delete()
+    txt = f"""💌 ᴘɪɴɢ ᴘᴏɴɢ ʙᴀʙʏ...
 
-    txt = f"""💌 ᴘɪɴɢ ᴘᴏɴɢ ʙᴧʙʏ...
-
-• ᴅᴧᴛᴧʙᴧsᴇ: ᴏɴʟɪɴᴇ
-• ʏᴏᴜᴛᴜʙᴇ ᴧᴘɪ: ʀᴇsᴘᴏɴsɪᴠᴇ
+• ᴅᴀᴛᴀʙᴀsᴇ: ᴏɴʟɪɴᴇ
+• ʏᴏᴜᴛᴜʙᴇ ᴀᴘɪ: ʀᴇsᴘᴏɴsɪᴠᴇ
 • ʙᴏᴛ sᴇʀᴠᴇʀ: ʀᴜɴɴɪɴɢ sᴍᴏᴏᴛʜʟʏ
-• ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ: ᴏᴘᴛɪᴍᴧʟ
-• ᴧᴘɪ ᴘɪɴɢ: {delta_ping * 1000:.3f} ms   
+• ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ: ᴏᴘᴛɪᴍᴀʟ
+• ᴀᴘɪ ᴘɪɴɢ: {delta_ping * 1000:.3f} ms   
 
 • ᴇᴠᴇʀʏᴛʜɪɴɢ ʟᴏᴏᴋs ɢᴏᴏᴅ!
 """
-    await query.answer(txt, show_alert=True)
+    await q.answer(txt, show_alert=True)
+    return
+
+
+@app.on_callback_query(filters.regex("shiv_aarumi") & ~BANNED_USERS)
+@languageCB
+async def support(client, CallbackQuery, _):
+    await CallbackQuery.edit_message_text(
+        text="ʜᴇʀᴇ ᴀʀᴇ ꜱᴏᴍᴇ ɪᴍᴘᴏʀᴛᴀɴᴛ ʟɪɴᴋꜱ.",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(text="ᴅᴇᴠs", user_id=config.OWNER_ID),
+                ],
+                [
+                    InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url=config.SUPPORT_CHAT),
+                    InlineKeyboardButton(text="ᴄʜᴀɴɴᴇʟ", url=config.SUPPORT_CHANNEL),
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="ʙᴀᴄᴋ", callback_data="settingsback_helper"
+                    )
+                ],
+            ]
+        ),
+    )
 
 
 @app.on_callback_query(filters.regex("settingsback_helper") & ~BANNED_USERS)
@@ -119,11 +115,9 @@ async def settings_back_markup(client, CallbackQuery: CallbackQuery, _):
         pass
     if CallbackQuery.message.chat.type == ChatType.PRIVATE:
         await app.resolve_peer(OWNER_ID)
-        OWNER = OWNER_ID
         buttons = private_panel(_)
-        UP, CPU, RAM, DISK = await bot_sys_stats()
         return await CallbackQuery.edit_message_text(
-            _["start_2"].format(CallbackQuery.from_user.mention, app.mention, UP, DISK, CPU, RAM),
+            _["start_2"].format(CallbackQuery.from_user.mention, app.mention),
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     else:
@@ -376,12 +370,10 @@ async def authusers_mar(client, CallbackQuery, _):
             upl = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
-                            text=_["BACK_BUTTON"], callback_data=f"AU"
-                        ),
+                        InlineKeyboardButton(text=_["BACK_BUTTON"], callback_data="AU"),
                         InlineKeyboardButton(
                             text=_["CLOSE_BUTTON"],
-                            callback_data=f"close",
+                            callback_data="close",
                         ),
                     ]
                 ]
@@ -413,7 +405,7 @@ async def authusers_mar(client, CallbackQuery, _):
 @app.on_callback_query(filters.regex("VOMODECHANGE") & ~BANNED_USERS)
 @ActualAdminCB
 async def vote_change(client, CallbackQuery, _):
-    command = CallbackQuery.matches[0].group(1)
+    CallbackQuery.matches[0].group(1)
     try:
         await CallbackQuery.answer(_["set_cb_3"], show_alert=True)
     except:
@@ -433,16 +425,3 @@ async def vote_change(client, CallbackQuery, _):
         )
     except MessageNotModified:
         return
-
-
-# ©️ Copyright Reserved - @NoxxOP  Nand Yaduwanshi
-
-# ===========================================
-# ©️ 2025 Nand Yaduwanshi (aka @NoxxOP)
-# 🔗 GitHub : https://github.com/NoxxOP/ShrutiMusic
-# 📢 Telegram Channel : https://t.me/ShrutiBots
-# ===========================================
-
-
-# ❤️ Love From ShrutiBots 
-
