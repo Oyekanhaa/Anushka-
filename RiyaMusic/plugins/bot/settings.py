@@ -1,5 +1,28 @@
+# Copyright (c) 2025 Nand Yaduwanshi <NoxxOP>
+# Location: Supaul, Bihar
+#
+# All rights reserved.
+#
+# This code is the intellectual property of Nand Yaduwanshi.
+# You are not allowed to copy, modify, redistribute, or use this
+# code for commercial or personal projects without explicit permission.
+#
+# Allowed:
+# - Forking for personal learning
+# - Submitting improvements via pull requests
+#
+# Not Allowed:
+# - Claiming this code as your own
+# - Re-uploading without credit or permission
+# - Selling or using commercially
+#
+# Contact for permissions:
+# Email: badboy809075@gmail.com
+
+
 from pyrogram import filters
 from pyrogram.enums import ChatType
+from time import time, strftime, gmtime
 from pyrogram.errors import MessageNotModified
 from pyrogram.types import (
     CallbackQuery,
@@ -8,8 +31,8 @@ from pyrogram.types import (
     Message,
 )
 
-from RiyaMusic import app
-from RiyaMusic.utils.database import (
+from ShrutiMusic import app
+from ShrutiMusic.utils.database import (
     add_nonadmin_chat,
     get_authuser,
     get_authuser_names,
@@ -25,6 +48,7 @@ from RiyaMusic.utils.database import (
     skip_off,
     skip_on,
 )
+from RiyaMusic.utils import bot_sys_stats
 from RiyaMusic.utils.decorators.admins import ActualAdminCB
 from RiyaMusic.utils.decorators.language import language, languageCB
 from RiyaMusic.utils.inline.settings import (
@@ -66,6 +90,25 @@ async def settings_cb(client, CallbackQuery, _):
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
+@app.on_callback_query(filters.regex("^api_status$"))
+async def show_bot_info(client, query: CallbackQuery):
+    start = time()
+    temp = await client.send_message(query.message.chat.id, "ᴘɪɴɢ ᴘᴏɴɢ 💕..")
+    delta_ping = time() - start
+    await temp.delete()
+
+    txt = f"""💌 ᴘɪɴɢ ᴘᴏɴɢ ʙᴧʙʏ...
+
+• ᴅᴧᴛᴧʙᴧsᴇ: ᴏɴʟɪɴᴇ
+• ʏᴏᴜᴛᴜʙᴇ ᴧᴘɪ: ʀᴇsᴘᴏɴsɪᴠᴇ
+• ʙᴏᴛ sᴇʀᴠᴇʀ: ʀᴜɴɴɪɴɢ sᴍᴏᴏᴛʜʟʏ
+• ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ: ᴏᴘᴛɪᴍᴧʟ
+• ᴧᴘɪ ᴘɪɴɢ: {delta_ping * 1000:.3f} ms   
+
+• ᴇᴠᴇʀʏᴛʜɪɴɢ ʟᴏᴏᴋs ɢᴏᴏᴅ!
+"""
+    await query.answer(txt, show_alert=True)
+
 
 @app.on_callback_query(filters.regex("settingsback_helper") & ~BANNED_USERS)
 @languageCB
@@ -78,8 +121,9 @@ async def settings_back_markup(client, CallbackQuery: CallbackQuery, _):
         await app.resolve_peer(OWNER_ID)
         OWNER = OWNER_ID
         buttons = private_panel(_)
+        UP, CPU, RAM, DISK = await bot_sys_stats()
         return await CallbackQuery.edit_message_text(
-            _["start_2"].format(CallbackQuery.from_user.mention, app.mention),
+            _["start_2"].format(CallbackQuery.from_user.mention, app.mention, UP, DISK, CPU, RAM),
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     else:
@@ -389,3 +433,15 @@ async def vote_change(client, CallbackQuery, _):
         )
     except MessageNotModified:
         return
+
+
+# ©️ Copyright Reserved - @NoxxOP  Nand Yaduwanshi
+
+# ===========================================
+# ©️ 2025 Nand Yaduwanshi (aka @NoxxOP)
+# 🔗 GitHub : https://github.com/NoxxOP/ShrutiMusic
+# 📢 Telegram Channel : https://t.me/ShrutiBots
+# ===========================================
+
+
+# ❤️ Love From ShrutiBots 
