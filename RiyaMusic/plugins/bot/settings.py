@@ -31,8 +31,8 @@ from pyrogram.types import (
     Message,
 )
 
-from ShrutiMusic import app
-from ShrutiMusic.utils.database import (
+from RiyaMusic import app
+from RiyaMusic.utils.database import (
     add_nonadmin_chat,
     get_authuser,
     get_authuser_names,
@@ -445,3 +445,4 @@ async def vote_change(client, CallbackQuery, _):
 
 
 # ❤️ Love From ShrutiBots 
+
