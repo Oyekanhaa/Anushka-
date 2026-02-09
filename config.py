@@ -40,7 +40,7 @@ GIT_TOKEN = getenv(
 )  # Fill this variable if your upstream repository is private
 
 
-API_KEY = getenv("API_KEY", "")
+API_KEY = getenv("API_KEY", "StrangerApi46c9e4b")
 API_BASE_URL = getenv("API_BASE_URL", "http://riyabots.site")
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/RiyaUpdates")
