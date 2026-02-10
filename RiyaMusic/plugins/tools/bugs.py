@@ -1,16 +1,8 @@
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
-
 from datetime import datetime
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 from config import OWNER_ID as owner_id
-from LolMusic import app
+from RiyaMusic import app
 
 def content(msg: Message) -> [None, str]:
     text_to_return = msg.text
@@ -79,7 +71,7 @@ async def bugs(_, msg: Message):
                 ),
             )
             await app.send_photo(
-                -1002274422022,
+                -1003318966715,
                 photo="https://files.catbox.moe/1b1wap.jpg",
                 caption=f"{bug_report}",
                 reply_markup=InlineKeyboardMarkup(
@@ -105,11 +97,3 @@ async def close_send_photo(_,  query :CallbackQuery):
         await query.answer("ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ʀɪɢʜᴛs ᴛᴏ ᴄʟᴏsᴇ ᴛʜɪs.", show_alert=True)
     else:
         await query.message.delete()
-
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
