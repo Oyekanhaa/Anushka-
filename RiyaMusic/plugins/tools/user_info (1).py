@@ -1,15 +1,8 @@
-# =======================================================
-# ©️ 2025-26 All Rights Reserved by REVANGE Bots (suraj08832) 🚀
-
-# This source code is under MIT License 📜 Unauthorized forking, importing, or using this code without giving proper credit will result in legal action ⚠️
- 
-# 📩 DM for permission : @brahix
-# ======================================================
 from pyrogram.enums import ParseMode
 import os
 from pyrogram import filters, enums, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from LolMusic import app
+from RiyaMusic import app
 
 
 @app.on_message(filters.command('id'))
@@ -141,10 +134,4 @@ async def userinfo(_, message: Message):
     except Exception as e:
         await message.reply_text(f"Error: {str(e)}")
 
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
 
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
