@@ -1,15 +1,7 @@
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
-
 import os
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from LolMusic import app
+from RiyaMusic import app
 import requests
 
 
@@ -93,10 +85,3 @@ async def get_link_group(client, message):
     except Exception:
         pass
 
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
