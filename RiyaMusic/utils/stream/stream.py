@@ -109,6 +109,7 @@ async def stream(
                         duration_min,
                         user_name,
                     ),
+                    has_spoiler=True,
                     reply_markup=InlineKeyboardMarkup(button),
                 )
                 db[chat_id][0]["mystic"] = run
@@ -128,6 +129,7 @@ async def stream(
                 original_chat_id,
                 photo=carbon,
                 caption=_["play_21"].format(position, link),
+                has_spoiler=True,
                 reply_markup=upl,
             )
     elif streamtype == "youtube":
@@ -195,6 +197,7 @@ async def stream(
                     duration_min,
                     user_name,
                 ),
+                has_spoiler=True,
                 reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
@@ -245,6 +248,7 @@ async def stream(
                 caption=_["stream_1"].format(
                     config.SUPPORT_CHAT, title[:23], duration_min, user_name
                 ),
+                has_spoiler=True,
                 reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
@@ -297,6 +301,7 @@ async def stream(
                 original_chat_id,
                 photo=config.TELEGRAM_VIDEO_URL if video else config.TELEGRAM_AUDIO_URL,
                 caption=_["stream_1"].format(link, title[:23], duration_min, user_name),
+                has_spoiler=True,
                 reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
@@ -363,6 +368,7 @@ async def stream(
                     duration_min,
                     user_name,
                 ),
+                has_spoiler=True,
                 reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
@@ -413,6 +419,7 @@ async def stream(
                 original_chat_id,
                 photo=config.STREAM_IMG_URL,
                 caption=_["stream_2"].format(user_name),
+                has_spoiler=True,
                 reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
