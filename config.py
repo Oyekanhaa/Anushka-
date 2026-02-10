@@ -141,21 +141,21 @@ confirmer = {}
 # ------------------------------------------------------------------------
 # ------------------------------------------------------------------------
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://telegra.ph/file/eb31c20889c5fca9e153f.jpg, https://telegra.ph/file/62a4a5c93f78df95a7d61.jpg, https://telegra.ph/file/af1b9fb2c83194a37c44d.jpg"
+    "START_IMG_URL", "https://files.catbox.moe/8gi12l.jpg"
 )
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://telegra.ph/file/e778c93e89fdb388b214b.mp4"
+    "PING_IMG_URL", "https://files.catbox.moe/8gi12l.jpg"
 )
-PLAYLIST_IMG_URL = "https://telegra.ph/file/51cb8a22e65caa4382879.jpg"
-STATS_IMG_URL = "https://telegra.ph/file/e778c93e89fdb388b214b.mp4"
-TELEGRAM_AUDIO_URL = "https://telegra.ph/file/51cb8a22e65caa4382879.jpg"
-TELEGRAM_VIDEO_URL = "https://telegra.ph/file/51cb8a22e65caa4382879.jpg"
-STREAM_IMG_URL = "https://telegra.ph/file/03efec694e41e891b29dc.jpg"
-SOUNCLOUD_IMG_URL = "https://telegra.ph/file/d723f4c80da157fca1678.jpg"
-YOUTUBE_IMG_URL = "https://telegra.ph/file/4dc854f961cd3ce46899b.jpg"
-SPOTIFY_ARTIST_IMG_URL = "https://telegra.ph/file/d723f4c80da157fca1678.jpg"
-SPOTIFY_ALBUM_IMG_URL = "https://telegra.ph/file/6c741a6bc1e1663ac96fc.jpg"
-SPOTIFY_PLAYLIST_IMG_URL = "https://telegra.ph/file/6c741a6bc1e1663ac96fc.jpg"
+PLAYLIST_IMG_URL = "https://files.catbox.moe/8gi12l.jpg"
+STATS_IMG_URL = "https://files.catbox.moe/8gi12l.jpg"
+TELEGRAM_AUDIO_URL = "https://files.catbox.moe/8gi12l.jpg"
+TELEGRAM_VIDEO_URL = "https://files.catbox.moe/8gi12l.jpg"
+STREAM_IMG_URL = "https://files.catbox.moe/8gi12l.jpg"
+SOUNCLOUD_IMG_URL = "https://files.catbox.moe/8gi12l.jpg"
+YOUTUBE_IMG_URL = "https://files.catbox.moe/8gi12l.jpg"
+SPOTIFY_ARTIST_IMG_URL = "https://files.catbox.moe/8gi12l.jpg"
+SPOTIFY_ALBUM_IMG_URL = "https://files.catbox.moe/8gi12l.jpg"
+SPOTIFY_PLAYLIST_IMG_URL = "https://files.catbox.moe/8gi12l.jpg"
 
 # ------------------------------------------------------------------------
 # ------------------------------------------------------------------------
