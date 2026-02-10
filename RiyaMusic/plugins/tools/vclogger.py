@@ -7,48 +7,9 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from pyrogram.raw import functions
-from ShrutiMusic import app
-from ShrutiMusic.utils.database import get_assistant
-from ShrutiMusic.core.mongo import mongodb
-
-"""
-░█▀█░█▀▄░█▀█░█▀█░█▀▄░▀█▀░█▀▀░▀█▀░█▀█░█▀▄░█░█░░░█░░░▀█▀░█▀▀░█▀▀░█▀█░█▀▀░█▀▀
-░█▀▀░█▀▄░█░█░█▀▀░█▀▄░░█░░█▀▀░░█░░█▀█░█▀▄░░█░░░░█░░░░█░░█░░░█▀▀░█░█░▀▀█░█▀▀
-░▀░░░▀░▀░▀▀▀░▀░░░▀░▀░▀▀▀░▀▀▀░░▀░░▀░▀░▀░▀░░▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀
-
-ORIGINAL WORK & COPYRIGHT NOTICE
-================================
-Original Author: Nand Yaduwanshi (@NoxxOP)
-First Commit: September 26, 2025
-Original Repository: https://github.com/NoxxOP/Music (Private)
-Original File Path: ShrutiMusic/plugins/tools/vccall.py
-
-Copyright (c) 2025 Nand Yaduwanshi (@NoxxOP)
-All Rights Reserved.
-
-AUTHENTICITY PROOF:
-- Original development in private repository (NoxxOP/Music)
-- First commit date: September 26, 2025
-- Complete commit history maintained in private repository
-- This is a refactored/cleaned version of the original work
-
-Licensed under the Proprietary License.
-
-RESTRICTIONS:
-- Unauthorized copying, modification, distribution, or use is strictly prohibited
-- This software is provided for authorized use only
-- No part of this code may be reproduced without explicit written permission
-- Commercial use, redistribution, or derivative works are forbidden
-
-Owner: Nand Yaduwanshi
-GitHub: @NoxxOP
-Location: Supaul, Bihar, India
-
-LEGAL NOTICE:
-The original commit history proving authorship is maintained in the private repository.
-For licensing inquiries or to verify authenticity, contact via GitHub (@NoxxOP).
-Violation of this license will result in legal action.
-"""
+from RiyaMusic import app
+from RiyaMusic.utils.database import get_assistant
+from RiyaMusic.core.mongo import mongodb
 
 LOGGER = getLogger(__name__)
 
