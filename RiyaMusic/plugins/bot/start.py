@@ -22,6 +22,8 @@ from strings import get_string
 EFFECT_ID = [
     5104841245755180586,
     5104841245755180586,
+    5107584321108051014,
+    5107584321108051014,
 ]
 
 
@@ -158,6 +160,7 @@ async def welcome(client, message: Message):
                 await message.stop_propagation()
         except Exception as ex:
             print(ex)
+
 
 
 
