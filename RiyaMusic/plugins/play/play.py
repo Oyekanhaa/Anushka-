@@ -1,27 +1,26 @@
 import random
 import string
-
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from RiyaMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from RiyaMusic.core.call import Sona
-from RiyaMusic.utils import seconds_to_min, time_to_seconds
-from RiyaMusic.utils.channelplay import get_channeplayCB
-from RiyaMusic.utils.decorators.language import languageCB
-from RiyaMusic.utils.decorators.play import PlayWrapper
-from RiyaMusic.utils.formatters import formats
-from RiyaMusic.utils.inline import (
+from Spy import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+from Spy.core.call import Sagar
+from Spy.utils import seconds_to_min, time_to_seconds
+from Spy.utils.channelplay import get_channeplayCB
+from Spy.utils.decorators.language import languageCB
+from Spy.utils.decorators.play import PlayWrapper
+from Spy.utils.formatters import formats
+from Spy.utils.inline import (
     botplaylist_markup,
     livestream_markup,
     playlist_markup,
     slider_markup,
     track_markup,
 )
-from RiyaMusic.utils.logger import play_logs
-from RiyaMusic.utils.stream.stream import stream
+from Spy.utils.logger import play_logs
+from Spy.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 
 
@@ -257,38 +256,10 @@ async def play_commnd(
             img = details["thumb"]
             cap = _["play_10"].format(details["title"], details["duration_min"])
         elif await SoundCloud.valid(url):
-            try:
-                details, track_path = await SoundCloud.download(url)
-            except:
-                return await mystic.edit_text(_["play_3"])
-            duration_sec = details["duration_sec"]
-            if duration_sec > config.DURATION_LIMIT:
-                return await mystic.edit_text(
-                    _["play_6"].format(
-                        config.DURATION_LIMIT_MIN,
-                        app.mention,
-                    )
-                )
-            try:
-                await stream(
-                    _,
-                    mystic,
-                    user_id,
-                    details,
-                    chat_id,
-                    user_name,
-                    message.chat.id,
-                    streamtype="soundcloud",
-                    forceplay=fplay,
-                )
-            except Exception as e:
-                ex_type = type(e).__name__
-                err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
-                return await mystic.edit_text(err)
-            return await mystic.delete()
+            return await mystic.edit_text("❌ SoundCloud streaming and downloading is currently disabled.")
         else:
             try:
-                await Sona.stream_call(url)
+                await Kanha.stream_call(url)
             except NoActiveGroupCall:
                 await mystic.edit_text(_["black_9"])
                 return await app.send_message(
@@ -329,7 +300,8 @@ async def play_commnd(
             query = query.replace("-v", "")
         try:
             details, track_id = await YouTube.track(query)
-        except:
+        except Exception as ex:
+            print(ex)
             return await mystic.edit_text(_["play_3"])
         streamtype = "youtube"
     if str(playmode) == "Direct":
@@ -390,6 +362,7 @@ async def play_commnd(
             await mystic.delete()
             await message.reply_photo(
                 photo=img,
+                has_spoiler=True,
                 caption=cap,
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
@@ -408,6 +381,7 @@ async def play_commnd(
                 await mystic.delete()
                 await message.reply_photo(
                     photo=details["thumb"],
+                    has_spoiler=True,
                     caption=_["play_10"].format(
                         details["title"].title(),
                         details["duration_min"],
@@ -426,11 +400,11 @@ async def play_commnd(
                 await mystic.delete()
                 await message.reply_photo(
                     photo=img,
+                    has_spoiler=True,
                     caption=cap,
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
                 return await play_logs(message, streamtype=f"URL Searched Inline")
-
 
 @app.on_callback_query(filters.regex("MusicStream") & ~BANNED_USERS)
 @languageCB
@@ -501,8 +475,8 @@ async def play_music(client, CallbackQuery, _):
     return await mystic.delete()
 
 
-@app.on_callback_query(filters.regex("SonamousAdmin") & ~BANNED_USERS)
-async def Sonamous_check(client, CallbackQuery):
+@app.on_callback_query(filters.regex("KanhamousAdmin") & ~BANNED_USERS)
+async def Kanhamous_check(client, CallbackQuery):
     try:
         await CallbackQuery.answer(
             "» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ :\n\nᴏᴘᴇɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ sᴇᴛᴛɪɴɢs.\n-> ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀs\n-> ᴄʟɪᴄᴋ ᴏɴ ʏᴏᴜʀ ɴᴀᴍᴇ\n-> ᴜɴᴄʜᴇᴄᴋ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ᴘᴇʀᴍɪssɪᴏɴs.",
@@ -512,7 +486,7 @@ async def Sonamous_check(client, CallbackQuery):
         pass
 
 
-@app.on_callback_query(filters.regex("SonaPlaylists") & ~BANNED_USERS)
+@app.on_callback_query(filters.regex("KanhaPlaylists") & ~BANNED_USERS)
 @languageCB
 async def play_playlists_command(client, CallbackQuery, _):
     callback_data = CallbackQuery.data.strip()
@@ -632,6 +606,7 @@ async def slider_queries(client, CallbackQuery, _):
         buttons = slider_markup(_, vidid, user_id, query, query_type, cplay, fplay)
         med = InputMediaPhoto(
             media=thumbnail,
+            has_spoiler=True,
             caption=_["play_10"].format(
                 title.title(),
                 duration_min,
@@ -653,6 +628,7 @@ async def slider_queries(client, CallbackQuery, _):
         buttons = slider_markup(_, vidid, user_id, query, query_type, cplay, fplay)
         med = InputMediaPhoto(
             media=thumbnail,
+            has_spoiler=True,
             caption=_["play_10"].format(
                 title.title(),
                 duration_min,
