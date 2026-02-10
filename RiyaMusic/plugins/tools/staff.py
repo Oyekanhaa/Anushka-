@@ -1,11 +1,3 @@
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
-
 import os
 import asyncio
 from pyrogram import Client, filters
@@ -13,7 +5,7 @@ from pyrogram.types import Message
 from pyrogram import enums
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import FloodWait
-from LolMusic import app
+from RiyaMusic import app
 
 # ------------------------------------------------------------------------------- #
 
@@ -90,12 +82,4 @@ async def bots(client, message):
   except FloodWait as e:
     await asyncio.sleep(e.value)
     
-# ------------------------------------------------------------------------------- #
 
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
