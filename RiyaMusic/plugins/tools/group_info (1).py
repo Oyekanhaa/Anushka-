@@ -1,14 +1,6 @@
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
-
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
-from LolMusic import app
+from RiyaMusic import app
 import os
 import time
 from asyncio import sleep
@@ -110,10 +102,3 @@ async def group_status(client, message):
     await message.reply_text(status_text)
     
 
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
