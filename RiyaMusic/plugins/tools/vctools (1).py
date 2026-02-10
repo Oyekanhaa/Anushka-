@@ -1,21 +1,13 @@
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from LolMusic import app
+from RiyaMusic import app
 from config import OWNER_ID
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.enums import ChatType, ChatMemberStatus
 from strings import get_string
-from LolMusic.utils import SonaBin
-from LolMusic.utils.database import get_assistant, get_lang
-from LolMusic.core.call import Sona
+from RiyaMusic.utils import SonaBin
+from RiyaMusic.utils.database import get_assistant, get_lang
+from RiyaMusic.core.call import Sona
 
 async def is_admin(_, __, message):
     try:
@@ -134,12 +126,3 @@ async def vc_members(client, message):
             )
     except ValueError:
         await msg.edit(_["V_C_5"])
-
-
-# ======================================================
-# ©️ 2025-26 All Rights Reserved by Revange 😎
-
-# 🧑‍💻 Developer : t.me/dmcatelegram
-# 🔗 Source link : https://github.com/hexamusic/LolMusic
-# 📢 Telegram channel : t.me/dmcatelegram
-# =======================================================
