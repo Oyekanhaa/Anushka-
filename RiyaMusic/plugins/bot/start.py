@@ -20,8 +20,8 @@ from config import BANNED_USERS
 from strings import get_string
 
 EFFECT_ID = [
-    5046509860389126442,
     5159385139981059251,
+    5107584321108051014,
 ]
 
 
@@ -158,5 +158,6 @@ async def welcome(client, message: Message):
                 await message.stop_propagation()
         except Exception as ex:
             print(ex)
+
 
 
