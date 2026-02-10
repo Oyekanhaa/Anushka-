@@ -1,26 +1,27 @@
 import random
 import string
+
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from Spy import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from Spy.core.call import Sagar
-from Spy.utils import seconds_to_min, time_to_seconds
-from Spy.utils.channelplay import get_channeplayCB
-from Spy.utils.decorators.language import languageCB
-from Spy.utils.decorators.play import PlayWrapper
-from Spy.utils.formatters import formats
-from Spy.utils.inline import (
+from RiyaMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+from RiyaMusic.core.call import Sona
+from RiyaMusic.utils import seconds_to_min, time_to_seconds
+from RiyaMusic.utils.channelplay import get_channeplayCB
+from RiyaMusic.utils.decorators.language import languageCB
+from RiyaMusic.utils.decorators.play import PlayWrapper
+from RiyaMusic.utils.formatters import formats
+from RiyaMusic.utils.inline import (
     botplaylist_markup,
     livestream_markup,
     playlist_markup,
     slider_markup,
     track_markup,
 )
-from Spy.utils.logger import play_logs
-from Spy.utils.stream.stream import stream
+from RiyaMusic.utils.logger import play_logs
+from RiyaMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 
 
@@ -637,3 +638,4 @@ async def slider_queries(client, CallbackQuery, _):
         return await CallbackQuery.edit_message_media(
             media=med, reply_markup=InlineKeyboardMarkup(buttons)
         )
+
